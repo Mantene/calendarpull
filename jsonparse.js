@@ -1,4 +1,5 @@
 // From http://mikeclaffey.com/google-calendar-into-html/
+gcal_json_url = https://www.google.com/calendar/feeds/quaboagrsd.org_gl3a5vorptni3cgvmp12slaoj0@group.calendar.google.com/public/basic?orderby=starttime&sortorder=ascending&max-results=3&futureevents=true&alt=json
 function GCalEvents(gcal_json_url) {
 
 	// Get list of upcoming iCal events formatted in JSON
