@@ -1,38 +1,28 @@
-Hello World!
+<head>
 
-<SCRIPT LANGUAGE="JAVASCRIPT" TYPE="TEXT/JAVASCRIPT">
-document.write("I love JavaScript");
+	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
+	<script type='text/javascript' src='http://datejs.googlecode.com/files/date.js'></script>
+	<script type='text/javascript' src='./GCalEvents.js'></script>
+	<script type='text/javascript' src='./HideText.js'></script>
 
-// From http://mikeclaffey.com/google-calendar-into-html/
-gcal_json_url = https://www.google.com/calendar/feeds/quaboagrsd.org_gl3a5vorptni3cgvmp12slaoj0@group.calendar.google.com/public/basic?orderby=starttime&sortorder=ascending&max-results=3&futureevents=true&alt=json
-function GCalEvents(gcal_json_url) {
+</head>
 
-	// Get list of upcoming iCal events formatted in JSON
-	$.getJSON(gcal_json_url, function(data) {
-		console.log(data);
-		// Parse and render each event
-		$.each(data.feed.entry, function(i, item) {
-			console.log(i);
-			console.log(item);
-			if (i === 0) {
-				$("#gcal-events li").first().hide();
-			}
-			// event title
-			var event_title = item.title.$t;
+<body>
 
-			// event contents
-			var event_contents = $.trim(item.content.$t);
-			// make each separate line a new list item
-			//event_contents = event_contents.replace(/\n/g, "</li><li>");
-			event_contents = event_contents.replace(/Event Status: confirmed/, '');
-			event_contents = event_contents.replace(/Event Description: /, '');
+	<p>The following text should list 3 events with full details:</p>
 
-			// Render the event
-			jQuery("#gcal-events li").last().before(
-				"<li>" + event_title + "<ul>" + "<li>" + event_contents + "</li>" + "</ul>" + "</li>"
-			);
-		});
-	});
-}
-
-</SCRIPT>
+	<ul id="gcal-events">
+	  <li>No events listed</li>
+	</ul>
+	<button class="hidetext">Toggle yellow line</button> 
+	<div class="text" style="background-color:yellow;display: none;">
+		This is Yellow line!!
+	</div>
+ 
+	<script type="text/javascript" charset="utf-8">
+		//gcal_json_url = "https://mikeclaffey.com/sandbox/gcal-embed/example-json-data.js"
+		gcal_json_url = "https://www.google.com/calendar/feeds/quaboagrsd.org_gl3a5vorptni3cgvmp12slaoj0@group.calendar.google.com/public/basic?orderby=starttime&sortorder=ascending&max-results=3&futureevents=true&alt=json"
+		GCalEvents(gcal_json_url)
+	</script>
+	
+</body>
