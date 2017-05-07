@@ -8,7 +8,7 @@ function GCalEvents(gcal_json_url) {
 			console.log(i);
 			console.log(item);
 			if (i === 0) {
-				$("#gcal-events li").first().hide();
+				$("li").first().hide();
 			}
 			// event title
 			var event_title = item.title.$t;
@@ -20,7 +20,7 @@ function GCalEvents(gcal_json_url) {
 			event_contents = event_contents.replace(/Event Status: confirmed/, '');
 			event_contents = event_contents.replace(/Event Description: /, '');
 			// Render the event
-			jQuery("#gcal-events li").last().before(
+			jQuery("li").last().before(
 				"<li>" + event_title + "<ul>" + "<li>" + event_contents + "</li>" + "</ul>" + "</li>"
 			);
 		});
